@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Next Level</title>
+<style>
+  :root{
+    --bg:#0a0e1a; --panel:#111729; --card:#161d33; --card2:#141a2e;
+    --blue:#2f6bff; --purple:#7b3fe4; --text:#ffffff; --muted:#9aa3b8;
+    --border:rgba(255,255,255,0.08); --radius:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;line-height:1.5;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+
+  .navbar{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--border);}
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo .mark{width:34px;height:34px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+  .logo .name{font-weight:700;font-size:15px;}
+  .logo .sub{font-size:11px;color:var(--muted);font-weight:400;}
+  .navlinks{display:flex;gap:28px;}
+  .navlinks a{color:var(--muted);font-size:14px;padding-bottom:6px;}
+  .navlinks a.active{color:var(--text);border-bottom:2px solid var(--blue);}
+  .btn{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-weight:600;cursor:pointer;font-size:14px;}
+
+  .hero{padding:70px 24px;text-align:center;}
+  .eyebrow{color:var(--blue);font-size:12px;font-weight:600;margin-bottom:12px;}
+  h1{font-size:40px;margin-bottom:16px;}
+  .lead{color:var(--muted);max-width:560px;margin:0 auto;}
+
+  .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:0 24px 70px;max-width:1200px;margin:0 auto;}
+  .stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;}
+  .stat-card strong{display:block;font-size:28px;color:var(--blue);margin-bottom:6px;}
+  .stat-card span{color:var(--muted);font-size:13px;}
+
+  .story{padding:60px 24px;}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .story-img{border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#1a2140,#0d1122);aspect-ratio:1/1;object-fit:cover;width:100%;height:100%;}
+  h2{font-size:28px;margin-bottom:14px;}
+  .story p{color:var(--muted);margin-bottom:14px;max-width:480px;}
+
+  .values{padding:70px 24px;background:var(--panel);}
+  .section-head{text-align:center;max-width:560px;margin:0 auto 40px;}
+  .section-head p{color:var(--muted);}
+  .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .val-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;}
+  .val-ic{color:var(--blue);font-size:20px;margin-bottom:14px;}
+  .val-card h3{font-size:16px;margin-bottom:8px;}
+  .val-card p{color:var(--muted);font-size:13px;}
+
+  .team{padding:70px 24px;}
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .team-card{text-align:center;}
+  .team-img{aspect-ratio:1/1;border-radius:var(--radius);background:linear-gradient(135deg,#1a2140,#0d1122);margin-bottom:12px;}
+  .team-card h4{font-size:15px;margin-bottom:2px;}
+  .team-card span{color:var(--muted);font-size:12px;}
+
+  .cta-band{background:var(--panel);padding:60px 24px;text-align:center;}
+  .cta-band h2{margin-bottom:12px;}
+  .cta-band p{color:var(--muted);max-width:480px;margin:0 auto 28px;}
+
+  footer{background:var(--panel);padding:60px 24px 24px;border-top:1px solid var(--border);}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:32px;margin-bottom:40px;}
+  footer h4{font-size:13px;margin-bottom:16px;color:var(--muted);letter-spacing:0.5px;}
+  footer ul{list-style:none;}
+  footer li{margin-bottom:10px;}
+  footer a{color:var(--muted);font-size:14px;}
+  footer p{color:var(--muted);font-size:13px;margin-top:12px;max-width:280px;}
+  .newsletter{display:flex;gap:8px;margin-top:12px;}
+  .newsletter input{flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--text);}
+  .newsletter button{background:var(--blue);border:none;border-radius:8px;width:40px;color:#fff;cursor:pointer;}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;color:var(--muted);font-size:12px;}
+
+  @media(max-width:900px){
+    .stat-strip,.val-grid{grid-template-columns:1fr 1fr;}
+    .story-grid{grid-template-columns:1fr;}
+    .team-grid{grid-template-columns:1fr 1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <div class="mark">NL</div>
+    <div><div class="name">NEXT LEVEL</div><div class="sub">Gaming &amp; Esports Arena</div></div>
+  </div>
+  <nav class="navlinks">
+    <a href="home.html">Home</a>
+    <a href="about.html" class="active">About Us</a>
+    <a href="index.html">Overview</a>
+    <a href="calculate-fees.html">Calculate Fees</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+  <a href="book.html"><button class="btn">Book Now</button></a>
+</header>
+
+<section class="hero container">
+  <div class="eyebrow">ABOUT NEXT LEVEL</div>
+  <h1>Built by players who wanted better</h1>
+  <p class="lead">Next Level started with a simple frustration: nowhere in Riyadh offered tournament-grade gaming without renting a whole studio. So we built one arena that does both — casual sessions and serious competition.</p>
+</section>
+
+<div class="stat-strip">
+  <div class="stat-card"><strong>2022</strong><span>Founded in Riyadh</span></div>
+  <div class="stat-card"><strong>24K+</strong><span>Community members</span></div>
+  <div class="stat-card"><strong>12</strong><span>Private suites &amp; zones</span></div>
+  <div class="stat-card"><strong>4.9★</strong><span>Average rating</span></div>
+</div>
+
+<section class="story container">
+  <div class="story-grid">
+    <img src="images/photo-13.png" alt="Friends celebrating together at Next Level" class="story-img">
+    <div>
+      <div class="eyebrow">OUR STORY</div>
+      <h2>From a LAN party to a full arena</h2>
+      <p>Next Level began as a weekend LAN party hosted by three friends in a converted warehouse space. What started as bring-your-own-rig sessions for 20 people grew into a full esports venue with private suites, tournament infrastructure and a resident host team.</p>
+      <p>Today we run everything from solo VIP sessions to 120-player corporate tournaments, but the standard hasn't changed: real hardware, real support, zero compromises on latency.</p>
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">WHAT WE STAND FOR</div>
+      <h2>Our values</h2>
+      <p>The principles behind every suite, session and staff decision.</p>
+    </div>
+    <div class="val-grid">
+      <div class="val-card"><div class="val-ic">⚡</div><h3>Performance first</h3><p>Every rig, connection and peripheral is tournament-grade — no shared bandwidth, no compromises.</p></div>
+      <div class="val-card"><div class="val-ic">🤝</div><h3>Hosted, not hands-off</h3><p>A dedicated host is with you from setup to teardown, so you focus on playing.</p></div>
+      <div class="val-card"><div class="val-ic">🌍</div><h3>Open to everyone</h3><p>From first-time players to pro teams, the arena is built to welcome every skill level.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="team container">
+  <div class="section-head">
+    <div class="eyebrow">THE TEAM</div>
+    <h2>Meet the arena crew</h2>
+    <p style="color:var(--muted);">The hosts, technicians and event leads who keep every session running smoothly.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card"><div class="team-img"></div><h4>Omar Al-Harbi</h4><span>Founder &amp; Arena Director</span></div>
+    <div class="team-card"><div class="team-img"></div><h4>Sara Al-Qahtani</h4><span>Head of Experience</span></div>
+    <div class="team-card"><div class="team-img"></div><h4>Khalid Nasser</h4><span>Technical Lead</span></div>
+    <div class="team-card"><div class="team-img"></div><h4>Reem Al-Shammari</h4><span>Events &amp; Tournaments</span></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2>Come see the arena for yourself</h2>
+  <p>Walk-ins are welcome, or book ahead to guarantee your suite.</p>
+  <a href="book.html"><button class="btn">Book a Session</button></a>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="logo"><div class="mark">NL</div><div><div class="name">NEXT LEVEL</div><div class="sub">Gaming &amp; Esports Arena</div></div></div>
+      <p>Premium gaming, competitive esports and unforgettable team experiences—built for players at every level.</p>
+    </div>
+    <div><h4>EXPLORE</h4><ul><li><a href="home.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="index.html">Experiences</a></li><li><a href="calculate-fees.html">Calculate Fees</a></li></ul></div>
+    <div><h4>SUPPORT</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="#">FAQs</a></li><li><a href="#">Safety Guidelines</a></li><li><a href="#">Terms &amp; Privacy</a></li></ul></div>
+    <div>
+      <h4>STAY IN THE GAME</h4>
+      <p style="margin-top:0;">Drops, tournaments and members-only offers.</p>
+      <div class="newsletter"><input type="email" placeholder="Email address"><button>→</button></div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Next Level Gaming &amp; Esports Arena. All rights reserved.</span>
+    <span>Riyadh, Saudi Arabia • Built for the next generation</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculate Fees — Next Level</title>
+<style>
+  :root{
+    --bg:#0a0e1a; --panel:#111729; --card:#161d33; --card2:#141a2e;
+    --blue:#2f6bff; --purple:#7b3fe4; --text:#ffffff; --muted:#9aa3b8;
+    --border:rgba(255,255,255,0.08); --radius:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;line-height:1.5;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+
+  .navbar{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--border);}
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo .mark{width:34px;height:34px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+  .logo .name{font-weight:700;font-size:15px;}
+  .logo .sub{font-size:11px;color:var(--muted);font-weight:400;}
+  .navlinks{display:flex;gap:28px;}
+  .navlinks a{color:var(--muted);font-size:14px;padding-bottom:6px;}
+  .navlinks a.active{color:var(--text);border-bottom:2px solid var(--blue);}
+  .btn{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-weight:600;cursor:pointer;font-size:14px;}
+  .btn:hover{opacity:0.9;}
+  .btn-purple{background:var(--purple);}
+  .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text);width:100%;padding:12px;border-radius:8px;font-weight:600;cursor:pointer;}
+
+  .hero{text-align:center;padding:48px 24px 8px;}
+  .badge{display:inline-block;background:rgba(47,107,255,0.15);color:#7ba4ff;font-size:12px;padding:6px 14px;border-radius:20px;margin-bottom:18px;}
+  h1{font-size:36px;margin-bottom:14px;}
+  .lead{color:var(--muted);max-width:520px;margin:0 auto;}
+
+  .calc-section{padding:40px 24px;}
+  .calc-grid{display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start;}
+  .selected-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+  .selected-head h3{font-size:18px;}
+  .selected-head .count{background:var(--card2);color:var(--blue);font-size:12px;padding:4px 10px;border-radius:12px;}
+  .selected-head p{color:var(--muted);font-size:13px;margin-bottom:0;}
+
+  .exp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:grid;grid-template-columns:90px 1fr auto;gap:16px;align-items:center;margin-top:16px;}
+  .exp-thumb{width:90px;height:70px;border-radius:8px;background:linear-gradient(135deg,#1a2140,#0d1122);object-fit:cover;display:block;}
+  .exp-tag{font-size:11px;color:var(--blue);margin-bottom:4px;text-transform:uppercase;}
+  .exp-name{font-size:16px;font-weight:600;margin-bottom:8px;}
+  .exp-meta{font-size:12px;color:var(--muted);}
+  .exp-controls{display:flex;gap:24px;margin-top:8px;}
+  .qty-control{display:flex;align-items:center;gap:10px;}
+  .qty-control label,.dur-control label{font-size:10px;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:6px;}
+  .qty-btns{display:flex;align-items:center;gap:8px;}
+  .qty-btns button{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;}
+  .qty-btns span{min-width:16px;text-align:center;}
+  .dur-control select{background:var(--card2);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:13px;}
+  .exp-right{text-align:right;}
+  .exp-price{font-weight:700;font-size:16px;margin-bottom:10px;}
+  .exp-remove{color:#ff6b6b;font-size:12px;background:none;border:none;cursor:pointer;}
+
+  .add-exp{margin-top:20px;width:100%;padding:16px;border:1px dashed var(--border);border-radius:var(--radius);background:transparent;color:var(--blue);font-weight:600;cursor:pointer;}
+  .custom-banner{margin-top:16px;background:linear-gradient(90deg,rgba(123,63,228,0.15),rgba(47,107,255,0.1));border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-size:14px;}
+
+  .summary{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;position:sticky;top:20px;}
+  .summary-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+  .summary-head h3{font-size:16px;}
+  .summary-head small{color:var(--muted);display:block;font-size:11px;}
+  .sum-row{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:12px;}
+  .sum-row span.val{color:var(--text);}
+  .sum-row.discount span.val{color:#4ade80;}
+  .sum-total{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);margin-top:14px;padding-top:16px;font-size:17px;font-weight:700;}
+  .sum-total .amt{color:var(--blue);font-size:22px;}
+  .note{background:rgba(47,107,255,0.1);border-radius:8px;padding:10px;font-size:12px;color:var(--muted);margin:16px 0;}
+  .summary .btn{width:100%;margin-bottom:10px;}
+
+  .flow{background:var(--panel);padding:64px 24px;text-align:center;}
+  .flow .eyebrow{color:var(--blue);font-size:12px;margin-bottom:10px;}
+  .flow h2{font-size:28px;margin-bottom:8px;}
+  .flow p.lead{color:var(--muted);margin-bottom:40px;}
+  .flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:0 auto;}
+  .flow-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;text-align:left;position:relative;}
+  .flow-num{position:absolute;top:16px;right:18px;color:var(--border);font-size:22px;font-weight:700;}
+  .flow-card .ic{color:var(--blue);font-size:20px;margin-bottom:14px;}
+  .flow-card h4{font-size:16px;margin-bottom:8px;}
+  .flow-card p{color:var(--muted);font-size:13px;}
+
+  .cta-band{display:flex;justify-content:space-between;align-items:center;padding:40px 24px;max-width:1200px;margin:0 auto;flex-wrap:wrap;gap:16px;}
+  .cta-band h3{font-size:20px;margin-bottom:6px;}
+  .cta-band p{color:var(--muted);font-size:14px;max-width:520px;}
+  .cta-btn{background:transparent;border:1px solid var(--border);color:var(--text);padding:12px 20px;border-radius:8px;cursor:pointer;font-weight:600;white-space:nowrap;}
+
+  footer{background:var(--panel);padding:60px 24px 24px;border-top:1px solid var(--border);}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:32px;margin-bottom:40px;}
+  footer h4{font-size:13px;margin-bottom:16px;color:var(--muted);letter-spacing:0.5px;}
+  footer ul{list-style:none;}
+  footer li{margin-bottom:10px;}
+  footer a{color:var(--muted);font-size:14px;}
+  footer p{color:var(--muted);font-size:13px;margin-top:12px;max-width:280px;}
+  .newsletter{display:flex;gap:8px;margin-top:12px;}
+  .newsletter input{flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--text);}
+  .newsletter button{background:var(--blue);border:none;border-radius:8px;width:40px;color:#fff;cursor:pointer;}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;color:var(--muted);font-size:12px;}
+
+  @media(max-width:900px){
+    .calc-grid{grid-template-columns:1fr;}
+    .exp-card{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .navlinks{display:none;}
+    .cta-band{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <div class="mark">NL</div>
+    <div><div class="name">NEXT LEVEL</div><div class="sub">Gaming &amp; Esports Arena</div></div>
+  </div>
+  <nav class="navlinks">
+    <a href="home.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="index.html">Overview</a>
+    <a href="calculate-fees.html" class="active">Calculate Fees</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+  <a href="book.html"><button class="btn">Book Now</button></a>
+</header>
+
+<section class="hero">
+  <span class="badge">📋 SMART FEE CALCULATOR</span>
+  <h1>Build your Next Level experience</h1>
+  <p class="lead">Combine experiences, adjust durations and get a transparent estimated quotation for your group in seconds.</p>
+</section>
+
+<section class="calc-section container">
+  <div class="calc-grid">
+    <div>
+      <div class="selected-head">
+        <div>
+          <h3>Selected Experiences</h3>
+          <p>Configure each booking before calculating your total.</p>
+        </div>
+        <span class="count" id="selectedCount">3 selected</span>
+      </div>
+
+      <div id="expList"></div>
+
+      <button class="add-exp" onclick="addExperience()">+ Add Another Experience</button>
+
+      <div class="custom-banner">
+        <strong>Planning for 20+ players?</strong> Request a tailored event quote for reserved zones, catering and tournament support.
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-head">
+        <h3>Fee Summary</h3>
+        <small>Estimate #NLG-2048</small>
+      </div>
+      <div class="sum-row"><span>Subtotal</span><span class="val" id="subtotal">SAR 0.00</span></div>
+      <div class="sum-row"><span>Number of bookings</span><span class="val" id="bookingCount">0</span></div>
+      <div class="sum-row discount"><span>Multi-booking discount (10%)</span><span class="val" id="discount">– SAR 0.00</span></div>
+      <div class="sum-row"><span>VAT (15%)</span><span class="val" id="vat">SAR 0.00</span></div>
+      <div class="sum-total"><span>Final Total</span><span class="amt" id="finalTotal">SAR 0.00</span></div>
+      <div class="note">ⓘ This result is an estimated quotation. Final pricing and availability are confirmed before payment.</div>
+      <button class="btn" onclick="calculateTotal()">📄 Calculate Total</button>
+      <button class="btn btn-purple" onclick="alert('Quote requested! Our team will follow up shortly.')">📄 Request Quote</button>
+      <button class="btn-outline" onclick="alert('Continuing to booking...')">→ Continue Booking</button>
+      <p style="text-align:center;color:var(--muted);font-size:11px;margin-top:10px;">No payment required to calculate or request a quote.</p>
+    </div>
+  </div>
+</section>
+
+<section class="flow">
+  <div class="eyebrow">SIMPLE &amp; TRANSPARENT</div>
+  <h2>From idea to game time</h2>
+  <p class="lead">A clear planning flow with no hidden fees.</p>
+  <div class="flow-grid">
+    <div class="flow-card"><span class="flow-num">01</span><div class="ic">🎮</div><h4>Choose experiences</h4><p>Mix private suites, team activities and simulation sessions.</p></div>
+    <div class="flow-card"><span class="flow-num">02</span><div class="ic">⚙</div><h4>Adjust your plan</h4><p>Set quantities and durations to match your group and schedule.</p></div>
+    <div class="flow-card"><span class="flow-num">03</span><div class="ic">📄</div><h4>Get your estimate</h4><p>Review the calculated quotation, then request or continue booking.</p></div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div>
+    <h3>Need a custom event package?</h3>
+    <p>Our event specialists can plan private tournaments, corporate team days and full arena takeovers around your exact requirements.</p>
+  </div>
+  <button class="cta-btn">🎧 Talk to an Event Specialist</button>
+</div>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="logo"><div class="mark">NL</div><div><div class="name">NEXT LEVEL</div><div class="sub">Gaming &amp; Esports Arena</div></div></div>
+      <p>Premium gaming, competitive esports and unforgettable team experiences—built for players at every level.</p>
+    </div>
+    <div><h4>EXPLORE</h4><ul><li><a href="home.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="index.html">Experiences</a></li><li><a href="calculate-fees.html">Calculate Fees</a></li></ul></div>
+    <div><h4>SUPPORT</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="#">FAQs</a></li><li><a href="#">Safety Guidelines</a></li><li><a href="#">Terms &amp; Privacy</a></li></ul></div>
+    <div>
+      <h4>STAY IN THE GAME</h4>
+      <p style="margin-top:0;">Drops, tournaments and members-only offers.</p>
+      <div class="newsletter"><input type="email" placeholder="Email address"><button>→</button></div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Next Level Gaming &amp; Esports Arena. All rights reserved.</span>
+    <span>Riyadh, Saudi Arabia • Built for the next generation</span>
+  </div>
+</footer>
+
+<script>
+  // Each experience: name, tag, price per unit at base duration, qty, duration options
+  let experiences = [
+    { name: "VIP Gaming Experience", tag: "PRIVATE SUITE", basePrice: 399, qty: 1, duration: "2 hours", img: "photo-14.png" },
+    { name: "Esports Team Bootcamp", tag: "TEAM EXPERIENCE", basePrice: 899, qty: 2, duration: "4 hours", img: "photo-19.png" },
+    { name: "Racing Simulator Duel", tag: "SIM RACING", basePrice: 299, qty: 1, duration: "1 hour", img: "photo-11.png" },
+  ];
+
+  function renderList(){
+    const list = document.getElementById('expList');
+    list.innerHTML = '';
+    experiences.forEach((exp, i) => {
+      const card = document.createElement('div');
+      card.className = 'exp-card';
+      card.innerHTML = `
+        <img src="images/${exp.img}" alt="${exp.name}" class="exp-thumb">
+        <div>
+          <div class="exp-tag">${exp.tag}</div>
+          <div class="exp-name">${exp.name}</div>
+          <div class="exp-meta">✔ Equipment included &nbsp; 👥 Flexible players</div>
+          <div class="exp-controls">
+            <div class="qty-control">
+              <label>Quantity</label>
+              <div class="qty-btns">
+                <button onclick="changeQty(${i},-1)">–</button>
+                <span>${exp.qty}</span>
+                <button onclick="changeQty(${i},1)">+</button>
+              </div>
+            </div>
+            <div class="dur-control">
+              <label>Duration</label>
+              <select onchange="changeDuration(${i}, this.value)">
+                ${['1 hour','2 hours','3 hours','4 hours'].map(d => `<option ${d===exp.duration?'selected':''}>${d}</option>`).join('')}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-price">SAR ${(exp.basePrice*exp.qty).toFixed(0)}</div>
+          <button class="exp-remove" onclick="removeExp(${i})">🗑 Remove</button>
+        </div>
+      `;
+      list.appendChild(card);
+    });
+    document.getElementById('selectedCount').textContent = experiences.length + ' selected';
+  }
+
+  function changeQty(i, delta){
+    experiences[i].qty = Math.max(1, experiences[i].qty + delta);
+    renderList();
+  }
+  function changeDuration(i, val){
+    experiences[i].duration = val;
+    renderList();
+  }
+  function removeExp(i){
+    experiences.splice(i,1);
+    renderList();
+  }
+  function addExperience(){
+    experiences.push({ name: "Console Party Lounge", tag: "TEAM EXPERIENCE", basePrice: 549, qty: 1, duration: "3 hours", img: "photo-18.png" });
+    renderList();
+  }
+
+  function calculateTotal(){
+    const subtotal = experiences.reduce((sum,e) => sum + e.basePrice*e.qty, 0);
+    const bookingCount = experiences.reduce((sum,e) => sum + e.qty, 0);
+    const discountRate = bookingCount >= 3 ? 0.10 : 0;
+    const discount = subtotal * discountRate;
+    const vat = (subtotal - discount) * 0.15;
+    const finalTotal = subtotal - discount + vat;
+
+    document.getElementById('subtotal').textContent = `SAR ${subtotal.toFixed(2)}`;
+    document.getElementById('bookingCount').textContent = bookingCount;
+    document.getElementById('discount').textContent = `– SAR ${discount.toFixed(2)}`;
+    document.getElementById('vat').textContent = `SAR ${vat.toFixed(2)}`;
+    document.getElementById('finalTotal').textContent = `SAR ${finalTotal.toFixed(2)}`;
+  }
+
+  renderList();
+  calculateTotal();
+</script>
+
+</body>
+</html>
