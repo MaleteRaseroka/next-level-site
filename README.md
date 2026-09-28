@@ -27,19 +27,24 @@ This is a website I built for a fictional gaming and esports arena called **Next
 ## Screenshots
 
 ### Home Page
-![Home Page](screenshots/home-page.png)
+<img width="1893" height="972" alt="image" src="https://github.com/user-attachments/assets/bb9aac71-fc8f-45dc-ae3e-20b20745f6c9" />
 
 ### Overview Page
-![Overview Page](screenshots/overview-page.png)
+<img width="1886" height="970" alt="image" src="https://github.com/user-attachments/assets/2ee77373-8d22-430f-b7e6-d5cc6fa67b96" />
 
 ### Calculate Fees
-![Calculate Fees](screenshots/calculate-fees.png)
+<img width="1907" height="898" alt="image" src="https://github.com/user-attachments/assets/1f90bb9c-1898-4bfc-baba-8a22a5ed7b76" />
 
 ### Contact Page
-![Contact Page](screenshots/contact-page.png)
+<img width="1900" height="881" alt="image" src="https://github.com/user-attachments/assets/8cc27c26-2008-4c42-aec9-b40e0169fc01" />
+)
 
 ### Book Now
-![Book Now](screenshots/book-now.png)
+<img width="1916" height="877" alt="image" src="https://github.com/user-attachments/assets/f2a32bb4-2a8b-4ad5-8eed-08afb77b33b3" />
+
+### About Us
+<img width="1885" height="970" alt="image" src="https://github.com/user-attachments/assets/48558985-a35a-43ce-92ca-b6e07c4081ab" />
+
 
 ## How to run it
 
