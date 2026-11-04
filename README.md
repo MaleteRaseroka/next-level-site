@@ -1,64 +1,40 @@
-# 🎮 Next Level - Gaming & Esports Arena
+# Next Level - Gaming & Esports Arena
 
-This is a website I built for a fictional gaming and esports arena called **Next Level**, based in Riyadh, Saudi Arabia. It's a multi-page site with a booking flow, a fee calculator, and a contact page, all styled with a dark gaming theme.
-
-## What it does
-
-- Browse different gaming experiences (VIP suites, team bootcamps, racing sims, etc.)
-- Calculate the total cost for a group booking with an interactive calculator
-- Go through a step-by-step booking flow
-- Contact the arena through a form, see hours, location, and FAQs
+A multi-page website for a fictional gaming and esports arena in Pretoria, South Africa. Built with plain HTML, CSS and JavaScript (no frameworks, no build step).
 
 ## Pages
 
-- `home.html` - Landing page
-- `about.html` - About the arena
-- `index.html` - Overview / VIP Gaming Experience page
-- `calculate-fees.html` - Fee calculator
-- `contact.html` - Contact page
-- `book.html` - Booking flow
+| File | Purpose |
+|------|---------|
+| `index.html` | Home / landing page |
+| `about.html` | Story, values and team |
+| `experiences.html` | Comparison table (sortable) and details for each experience |
+| `calculate-fees.html` | Group fee calculator with discount, VAT and quote request |
+| `book.html` | 3-step booking flow with validation |
+| `contact.html` | Contact form, opening hours table, FAQ |
 
-## Built with
+Shared files: `css/style.css` (all styling), `js/main.js` (all behaviour), `images/`.
 
-- HTML
-- CSS
-- JavaScript (no frameworks, just vanilla JS)
+## Features
 
-## Screenshots
+- Drop-down **Experiences** menu in the navigation (mouse, keyboard and mobile)
+- **Tables**: experience comparison (sortable), fee summary, opening hours, booking summary
+- **Error handling**: inline validation on the contact, booking, quote and newsletter forms; date and opening-hours checks on bookings; capped quantities; safe handling of blocked or corrupt browser storage; image fallbacks; global error notice
+- Responsive layout (desktop, tablet, phone) and keyboard-friendly focus states
 
-### Home Page
-<img width="1893" height="972" alt="image" src="https://github.com/user-attachments/assets/bb9aac71-fc8f-45dc-ae3e-20b20745f6c9" />
+## Run it locally
 
-### Overview Page
-<img width="1886" height="970" alt="image" src="https://github.com/user-attachments/assets/2ee77373-8d22-430f-b7e6-d5cc6fa67b96" />
+1. Open the folder in VS Code
+2. Install the **Live Server** extension
+3. Right-click `index.html` and choose **Open with Live Server**
 
-### Calculate Fees
-<img width="1907" height="898" alt="image" src="https://github.com/user-attachments/assets/1f90bb9c-1898-4bfc-baba-8a22a5ed7b76" />
+## Publish it (GitHub Pages)
 
-### Contact Page
-<img width="1900" height="881" alt="image" src="https://github.com/user-attachments/assets/8cc27c26-2008-4c42-aec9-b40e0169fc01" />
-)
-
-### Book Now
-<img width="1916" height="877" alt="image" src="https://github.com/user-attachments/assets/f2a32bb4-2a8b-4ad5-8eed-08afb77b33b3" />
-
-### About Us
-<img width="1885" height="970" alt="image" src="https://github.com/user-attachments/assets/48558985-a35a-43ce-92ca-b6e07c4081ab" />
-
-
-## How to run it
-
-1. Clone this repo
-2. Open the folder in VS Code
-3. Install the Live Server extension
-4. Right-click `home.html` and choose "Open with Live Server"
-
-That's it, no installs or build steps needed.
+1. Push these files to the root of the repository's `main` branch
+2. On GitHub: **Settings > Pages > Build and deployment**
+3. Source: **Deploy from a branch**, Branch: `main`, Folder: `/ (root)`
+4. Save. After a minute the site is live at `https://<username>.github.io/<repository>/`
 
 ## Notes
 
-This was made as a school project. The photos used are placeholder stock images, not real photos of an actual arena.
-
-## Author
-
-Lethabo Raseroka
+Made as a school project. Photos are placeholder stock images. There is no backend, so forms store data in the browser only.

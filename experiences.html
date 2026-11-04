@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Compare VIP suites, team bootcamps, console lounges and racing simulators at Next Level.">
+<title>Experiences | Next Level</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="navbar"><a class="logo" href="index.html" aria-label="Next Level home"><div class="mark">NL</div><div><div class="name">NEXT LEVEL</div><div class="sub">Gaming &amp; Esports Arena</div></div></a><nav id="site-nav" class="navlinks" aria-label="Main"><a href="index.html">Home</a><a href="about.html">About Us</a><div class="dropdown"><button type="button" class="dropdown-toggle active" aria-expanded="false" aria-haspopup="true" aria-controls="exp-menu">Experiences <span class="caret" aria-hidden="true">▼</span></button><ul class="dropdown-menu" id="exp-menu"><li><a class="all" href="experiences.html">All experiences</a></li><li><a href="experiences.html#vip">VIP Gaming Experience<small>1–5 players · 2 hours · R700</small></a></li><li><a href="experiences.html#bootcamp">Esports Team Bootcamp<small>Up to 10 players · 4 hours · R1800</small></a></li><li><a href="experiences.html#console">Console Party Lounge<small>Up to 8 players · 3 hours · R1100</small></a></li><li><a href="experiences.html#racing">Racing Simulator Duel<small>2 players · 60 minutes · R550</small></a></li></ul></div><a href="calculate-fees.html">Calculate Fees</a><a href="contact.html">Contact Us</a></nav><a class="btn" href="book.html">Book Now</a><button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">☰</button></header>
+<main id="main">
+
+<section class="hero-center container">
+  <div class="eyebrow">Experiences</div>
+  <h1>Choose how you want to play</h1>
+  <p class="lead">Four formats, one standard: pro-grade gear, a dedicated host and 1 Gbps fiber. Compare them below, then book.</p>
+</section>
+
+<section class="section container" style="padding-bottom:40px;">
+  <div class="table-tools">
+    <label for="sortTable">Sort by</label>
+    <select id="sortTable">
+      <option value="default">Featured</option>
+      <option value="price-asc">Price: low to high</option>
+      <option value="price-desc">Price: high to low</option>
+      <option value="duration">Shortest session</option>
+      <option value="players">Largest group</option>
+    </select>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <caption>Compare Next Level experiences</caption>
+      <thead><tr><th scope="col">Experience</th><th scope="col">Players</th><th scope="col">Duration</th><th scope="col">Best for</th><th scope="col" class="num">Price</th><th scope="col"><span class="visually-hidden">Action</span></th></tr></thead>
+      <tbody id="compareBody"><tr data-order="0" data-price="700" data-hours="2" data-max="5"><th scope="row">VIP Gaming Experience</th><td>1–5</td><td>2 hours</td><td>Squad nights and streamers</td><td class="num">R700</td><td><a class="link" href="book.html?exp=vip">Book</a></td></tr><tr data-order="1" data-price="1800" data-hours="4" data-max="10"><th scope="row">Esports Team Bootcamp</th><td>Up to 10</td><td>4 hours</td><td>Teams and corporate days</td><td class="num">R1800</td><td><a class="link" href="book.html?exp=bootcamp">Book</a></td></tr><tr data-order="2" data-price="1100" data-hours="3" data-max="8"><th scope="row">Console Party Lounge</th><td>Up to 8</td><td>3 hours</td><td>Birthdays and friend groups</td><td class="num">R1100</td><td><a class="link" href="book.html?exp=console">Book</a></td></tr><tr data-order="3" data-price="550" data-hours="1" data-max="2"><th scope="row">Racing Simulator Duel</th><td>2</td><td>60 minutes</td><td>Head-to-head rivals</td><td class="num">R550</td><td><a class="link" href="book.html?exp=racing">Book</a></td></tr></tbody>
+    </table>
+  </div>
+  <p class="muted" style="font-size:13px;margin-top:12px;">Prices are per session and exclude 15% VAT. Planning several sessions? Use the <a class="link" href="calculate-fees.html">fee calculator</a>.</p>
+</section>
+
+<section class="exp-detail" id="vip">
+  <div class="container split">
+    <img class="split-img" src="images/photo-14.png" alt="Private VIP gaming suite" loading="lazy">
+    <div>
+      <div class="tag">PRIVATE SUITE</div>
+      <h2>VIP Gaming Experience</h2>
+      <p class="lead">Your own sound-treated suite with tournament-grade rigs, consoles and a dedicated host.</p>
+      <ul class="checklist"><li>Private battle suite with ambient lighting</li><li>RTX-powered PCs and 240Hz displays</li><li>PlayStation 5 and Xbox Series X with a curated multiplayer library</li><li>Streaming-ready lighting and capture equipment</li><li>Dedicated host for setup, support and refreshments</li></ul>
+      <div class="big-price">R700 <small>per session · 2 hours · 1–5 players</small></div>
+      <a class="btn" href="book.html?exp=vip">Book this experience</a>
+    </div>
+  </div>
+</section>
+<section class="exp-detail" id="bootcamp">
+  <div class="container split reverse">
+    <img class="split-img" src="images/photo-19.png" alt="Esports team competing together" loading="lazy">
+    <div>
+      <div class="tag">TEAM EXPERIENCE</div>
+      <h2>Esports Team Bootcamp</h2>
+      <p class="lead">A reserved team zone built for scrims, tournaments and company team days.</p>
+      <ul class="checklist"><li>Reserved zone for up to 10 players</li><li>Scrim and tournament support from the arena crew</li><li>Team headsets and a shoutcaster desk</li><li>Refreshments for the whole squad</li></ul>
+      <div class="big-price">R1800 <small>per session · 4 hours · Up to 10 players</small></div>
+      <a class="btn" href="book.html?exp=bootcamp">Book this experience</a>
+    </div>
+  </div>
+</section>
+<section class="exp-detail" id="console">
+  <div class="container split">
+    <img class="split-img" src="images/photo-18.png" alt="Friends playing console games together on a couch" loading="lazy">
+    <div>
+      <div class="tag">TEAM EXPERIENCE</div>
+      <h2>Console Party Lounge</h2>
+      <p class="lead">Big screens, deep sofas and a party-game library for casual group sessions.</p>
+      <ul class="checklist"><li>Lounge seating in front of big 4K screens</li><li>PlayStation 5 and Xbox Series X</li><li>Party-game library for every skill level</li><li>Host support and refreshments included</li></ul>
+      <div class="big-price">R1100 <small>per session · 3 hours · Up to 8 players</small></div>
+      <a class="btn" href="book.html?exp=console">Book this experience</a>
+    </div>
+  </div>
+</section>
+<section class="exp-detail" id="racing">
+  <div class="container split reverse">
+    <img class="split-img" src="images/photo-11.png" alt="Two racing simulator cockpits side by side" loading="lazy">
+    <div>
+      <div class="tag">SIM RACING</div>
+      <h2>Racing Simulator Duel</h2>
+      <p class="lead">Two full simulator cockpits side by side for a proper head-to-head race.</p>
+      <ul class="checklist"><li>Two full simulator cockpits side by side</li><li>Force-feedback wheels and pedals</li><li>Live lap timing and a session leaderboard</li><li>A host on hand to set up your race</li></ul>
+      <div class="big-price">R550 <small>per session · 60 minutes · 2 players</small></div>
+      <a class="btn" href="book.html?exp=racing">Book this experience</a>
+    </div>
+  </div>
+</section>
+<section class="cta-band">
+  <h2>Not sure which one fits?</h2>
+  <p>Tell us about your group and we'll point you to the right session.</p>
+  <div class="cta-actions"><a class="btn" href="contact.html">Ask the arena team</a><a class="btn btn-outline" href="calculate-fees.html">Calculate group fees</a></div>
+</section>
+
+</main>
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="logo"><div class="mark">NL</div><div><div class="name">NEXT LEVEL</div><div class="sub">Gaming &amp; Esports Arena</div></div></div>
+      <p>Premium gaming, competitive esports and team experiences, built for players at every level.</p>
+    </div>
+    <div><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="experiences.html">Experiences</a></li><li><a href="calculate-fees.html">Calculate Fees</a></li></ul></div>
+    <div><h4>Support</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="contact.html#faq">FAQs</a></li><li><a href="book.html">Book a session</a></li></ul></div>
+    <div>
+      <h4>Stay in the game</h4>
+      <p style="margin-top:0;">Drops, tournaments and members-only offers.</p>
+      <form class="newsletter" novalidate>
+        <label class="visually-hidden" for="nl-email">Email address</label>
+        <div class="row"><input id="nl-email" type="email" placeholder="Email address" autocomplete="email"><button type="submit" aria-label="Subscribe">→</button></div>
+        <p class="msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span data-year>2026</span> Next Level Gaming &amp; Esports Arena. All rights reserved.</span>
+    <span>Pretoria, South Africa</span>
+  </div>
+</footer>
+<script src="js/main.js" defer></script>
+</body>
+</html>
